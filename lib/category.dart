@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-final List<String> category_images = <String>['images/flutter.jpg','images/flutter.jpg','images/flutter.jpg','images/flutter.jpg'];
-final List<String> category_name = <String>['원예','원예','원예','원예'];
+final List<String> category_images = <String>['images/flutter.jpg','images/flutter.jpg','images/flutter.jpg','images/flutter.jpg', 'images/flutter.jpg', 'images/flutter.jpg'];
+final List<String> category_name = <String>['예술/문화','운동/건강','원예','주식/부동산', '공부/자격증', '기타'];
 
 class category extends StatelessWidget {
   const category({super.key});
@@ -24,11 +24,11 @@ List<Widget> create_button() {
     Column button =  Column(
       children: [
         Container(
-          margin: const EdgeInsets.all(10),
-          width: 120,
-          height: 120,
+          margin: const EdgeInsets.only(left: 10, top: 60, right: 10, bottom: 5),
+          width: 80,
+          height: 80,
           decoration: const BoxDecoration(
-              color: Colors.blue,
+              color: Color(0xFFFFFFFF),
               shape: BoxShape.circle
           ),
           child: IconButton(
@@ -46,8 +46,13 @@ List<Widget> create_button() {
           ),
         ),
         Text(
-            category_name[i]
-        ),
+          category_name[i],
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 12),
+        )
+
       ],
     );
     button_list.add(button);

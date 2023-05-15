@@ -28,7 +28,7 @@ class _main_page extends State<main_page> {
         children: <Widget>[
           Container(
             height: 350,
-            color: Colors.green,
+            color: Color(0xFF336D58),
             child: Column (
               children: [
                 IconButton(
@@ -39,10 +39,20 @@ class _main_page extends State<main_page> {
                   },
                 ),
                 const Text(
-                    '배움으로 세상을 누리다.'
+                    '배움으로 세상을 누리다.',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20
+                    ),
                 ),
                 const Text(
-                    '배움누리'
+                    '배움누리',
+                     style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
