@@ -14,7 +14,7 @@ List<Widget> create_lecture() {
     InkWell lec = InkWell(
       onTap: () {print(lecture_name[i]);},
       child: Container(
-        margin: EdgeInsets.all(10),
+        margin: const EdgeInsets.all(10),
         padding: const EdgeInsets.all(10),
         color: Colors.yellow,
         child: Row(
@@ -28,10 +28,10 @@ List<Widget> create_lecture() {
               children: [
                 Text(
                     '${lecture_name[i]}\n'
-                        '${lecture_period[i]}\n\n'
-                        '${lecture_content[i]}\n'
-                        '${lecture_cost[i]}\n'
-                        '${lecture_operator[i]}'
+                    '${lecture_period[i]}\n\n'
+                    '${lecture_content[i]}\n'
+                    '${lecture_cost[i]}\n'
+                    '${lecture_operator[i]}'
                 ),
               ],
             )
