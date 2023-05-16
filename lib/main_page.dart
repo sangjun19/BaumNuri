@@ -74,19 +74,8 @@ class _main_page extends State<main_page> {
               ],
             ),
           ),
-          const Text(
-            '내 주변 교육 강좌'
-          ),
-          Container(
-              margin: const EdgeInsets.all(10),
-              padding: const EdgeInsets.all(10),
-            decoration: const BoxDecoration(
-              color: Colors.red,
-            ),
-            child: Column(
-              children: create_lecture(),
-            )
-          )
+          around_lecture(),
+          around_lecture(),
         ],
       ),
     ),

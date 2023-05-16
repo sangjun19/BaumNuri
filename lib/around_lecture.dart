@@ -8,6 +8,32 @@ final List<String> lecture_content = <String>["영어","영어","영어","영어
 final List<String> lecture_cost = <String>["30000","30000","30000","30000"];
 final List<String> lecture_operator = <String>["대전광역시","대전광역시","대전광역시","대전광역시"];
 
+class around_lecture extends StatelessWidget {
+  const around_lecture({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const Text(
+            '내 주변 교육 강좌'
+        ),
+        Container(
+            margin: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
+            decoration: const BoxDecoration(
+              color: Colors.red,
+            ),
+            child: Column(
+              children: create_lecture(),
+            )
+        )
+      ],
+    );
+  }
+}
+
+
 List<Widget> create_lecture() {
   List<Widget> lecture = [];
   for(int i=0;i<lecture_name.length;i++) {
