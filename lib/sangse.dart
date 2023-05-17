@@ -131,33 +131,33 @@ class Sangse extends StatelessWidget {
                         Flexible(
                             child: Center(
                                 child: Text(
-                          "어학",
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF336D58),
-                          ),
-                        ))),
+                                  "어학",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF336D58),
+                                  ),
+                                ))),
                         Flexible(
                             child: Center(
                                 child: Text(
-                          "어학",
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF336D58),
-                          ),
-                        ))),
+                                  "어학",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF336D58),
+                                  ),
+                                ))),
                         Flexible(
                             child: Center(
                                 child: Text(
-                          "어학",
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF336D58),
-                          ),
-                        ))),
+                                  "어학",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF336D58),
+                                  ),
+                                ))),
                       ],
                     )
                   ],
@@ -224,23 +224,7 @@ class Sangse extends StatelessWidget {
               ),
             ],
           ),
-          bottomNavigationBar: BottomNavigationBar(
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: '메인',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.bookmark),
-                label: '저장',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: '마이페이지',
-              ),
-            ],
-            selectedItemColor: Colors.amber[800],
-          )),
+      ),
     );
   }
 }

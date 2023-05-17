@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nuri_01/sangse.dart';
 import 'main_page.dart';
 import 'my_page.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const main_page(),
+      home: main_page(),
     );
   }
 }

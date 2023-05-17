@@ -22,37 +22,76 @@ class _main_page extends State<main_page> {
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
   static final List<Widget> _widgetOptions = <Widget>[
+
     SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Column(
         children: <Widget>[
           Container(
-            height: 350,
-            color: Colors.green,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage('images/background.png')
+                )
+            ),
             child: Column (
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(height: 40,),
                 IconButton(
-                  iconSize: 40,
-                  icon: const Icon(Icons.filter_alt),
-                  onPressed: () {
-                    print('filter');
-                  },
+                  //padding: const EdgeInsets.all(20),
+                    iconSize: 40,
+                    onPressed: () {
+                      print("filter");
+                    },
+                    icon: Image.asset(
+                      "images/filter.png",
+                      width: double.infinity,
+                      height: double.infinity,
+                      fit: BoxFit.cover,
+                    )
                 ),
-                const Text(
-                    '배움으로 세상을 누리다.'
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(40, 0, 0, 0), // Adjust the padding values as needed
+                  child: Text(
+                    '배움으로 세상을 누리다.',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
-                const Text(
-                    '배움누리'
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(40, 5, 0, 0), // Adjust the padding values as needed
+                  child: Text(
+                    '배움누리',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                    ),
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
-                      width: 250,
+                      width: 290,
+                      height: 42,
                       child: TextField(
                         decoration: const InputDecoration(
-                          labelText: '검색하기',
-                          border: OutlineInputBorder(),
+                          labelText: '찾으시는 강좌를 입력하세요',
+                          labelStyle: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w200
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white)
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
                         ),
                         onChanged: (text){
                           value = text;
@@ -61,8 +100,9 @@ class _main_page extends State<main_page> {
                       ),
                     ),
                     IconButton(
-                      iconSize: 65,
+                      iconSize: 40,
                       icon: const Icon(Icons.search),
+                      color: Colors.white,
                       tooltip: 'Increase volume by 10',
                       onPressed: () {
                         print(value);
@@ -75,7 +115,7 @@ class _main_page extends State<main_page> {
             ),
           ),
           around_lecture(),
-          around_lecture(),
+          //around_lecture(),
         ],
       ),
     ),
@@ -92,9 +132,6 @@ class _main_page extends State<main_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Main Page'),
-      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -114,7 +151,7 @@ class _main_page extends State<main_page> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Color(0xFF336D58),
         onTap: _onItemTapped,
       ),
     );

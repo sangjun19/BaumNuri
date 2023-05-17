@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-final List<String> lecture_image = <String>['images/flutter.jpg','images/flutter.jpg','images/flutter.jpg','images/flutter.jpg',];
-final List<String> lecture_name = <String>["영어회화 초급","영어회화 초급","영어회화 초급","영어회화 초급"];
-final List<String> lecture_period = <String>["2023","2023","2023","2023"];
-final List<String> lecture_content = <String>["영어","영어","영어","영어"];
-final List<String> lecture_cost = <String>["30000","30000","30000","30000"];
-final List<String> lecture_operator = <String>["대전광역시","대전광역시","대전광역시","대전광역시"];
+final List<String> lecture_image = <String>['images/basicenglish.png','images/gardentherapy.png','images/kdance.png','images/indiancook.png',];
+final List<String> lecture_name = <String>["   영어회화 초급","   원예치료","   한국무용","   인도요리"];
+final List<String> lecture_period = <String>["   수강기간: 2023년","   수강기간: 2023년","   수강기간: 2023년","   수강기간: 2023년"];
+final List<String> lecture_content = <String>["   강좌내용:","   강좌내용:","   강좌내용:","   강좌내용:"];
+final List<String> lecture_cost = <String>["   수강료: 30,000원","   수강료: 30,000원","   수강료: 30,000","  수강료: 30,000"];
+final List<String> lecture_operator = <String>["  운영기관: 유성구청","   운영기관: 유성구청","   운영기관: 유성구청","  운영기관: 유성구청"];
 
 class around_lecture extends StatelessWidget {
   const around_lecture({super.key});
@@ -15,14 +15,23 @@ class around_lecture extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Text(
-            '내 주변 교육 강좌'
+        Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: const [
+              Text('   내 주변 교육강좌',
+                style: TextStyle(
+                  color: Color(0xFF336D58),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+            ]
         ),
         Container(
-            margin: const EdgeInsets.all(10),
+            margin: const EdgeInsets.fromLTRB(20, 5, 20, 20),
             padding: const EdgeInsets.all(10),
             decoration: const BoxDecoration(
-              color: Colors.red,
+              color: Color(0xFFECECEC),
             ),
             child: Column(
               children: create_lecture(),
@@ -34,15 +43,27 @@ class around_lecture extends StatelessWidget {
 }
 
 
+
 List<Widget> create_lecture() {
   List<Widget> lecture = [];
   for(int i=0;i<lecture_name.length;i++) {
     InkWell lec = InkWell(
       onTap: () {print(lecture_name[i]);},
       child: Container(
-        margin: const EdgeInsets.all(10),
+        margin: EdgeInsets.all(10),
         padding: const EdgeInsets.all(10),
-        color: Colors.yellow,
+        decoration: BoxDecoration(
+            color: Color(0xFFFFFFFF),
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey.withOpacity(0.7),
+                  spreadRadius: 0,
+                  blurRadius: 7,
+                  offset: const Offset(0, 5)
+              )
+            ]
+        ),
         child: Row(
           children: [
             Image.asset(
@@ -53,11 +74,12 @@ List<Widget> create_lecture() {
             Column(
               children: [
                 Text(
-                    '${lecture_name[i]}\n'
-                    '${lecture_period[i]}\n\n'
-                    '${lecture_content[i]}\n'
-                    '${lecture_cost[i]}\n'
-                    '${lecture_operator[i]}'
+                  '${lecture_name[i]}\n'
+                      '${lecture_period[i]}\n'
+                      '${lecture_content[i]}\n'
+                      '${lecture_cost[i]}\n'
+                      '${lecture_operator[i]}',
+
                 ),
               ],
             )
