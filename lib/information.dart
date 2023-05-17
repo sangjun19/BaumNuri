@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(Sangse());
+  runApp(information());
 }
 
-class Sangse extends StatelessWidget {
-  Sangse({Key? key}) : super(key: key);
+class information extends StatelessWidget {
+  information({Key? key}) : super(key: key);
 
   String name = "강의 제목";
 
@@ -18,7 +18,7 @@ class Sangse extends StatelessWidget {
               Flexible(
                 flex: 10,
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     borderRadius: BorderRadius.vertical(
                       bottom: Radius.circular(10),
                     ),
@@ -28,18 +28,20 @@ class Sangse extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 60,
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           IconButton(
                             iconSize: 30,
                             icon: Icon(Icons.arrow_back_ios),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                           ),
                         ],
                       ),
@@ -59,7 +61,7 @@ class Sangse extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Flexible(
+                          const Flexible(
                             flex: 1,
                             child: SizedBox(
                               width: 30,
@@ -69,7 +71,7 @@ class Sangse extends StatelessWidget {
                             flex: 1,
                             child: Text(
                               "$name",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 28,
                                 fontWeight: FontWeight.w800,
                               ),
@@ -79,7 +81,7 @@ class Sangse extends StatelessWidget {
                             flex: 1,
                             child: IconButton(
                               iconSize: 30,
-                              icon: Icon(Icons.bookmark_add_outlined),
+                              icon: Icon(Icons.bookmark_outline),
                               onPressed: () {},
                             ),
                           ),

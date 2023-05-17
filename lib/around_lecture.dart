@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nuri_01/information.dart';
 
 final List<String> lecture_image = <String>['images/basicenglish.png','images/gardentherapy.png','images/kdance.png','images/indiancook.png',];
 final List<String> lecture_name = <String>["   영어회화 초급","   원예치료","   한국무용","   인도요리"];
@@ -34,7 +35,7 @@ class around_lecture extends StatelessWidget {
               color: Color(0xFFECECEC),
             ),
             child: Column(
-              children: create_lecture(),
+              children: create_lecture(context),
             )
         )
       ],
@@ -44,11 +45,17 @@ class around_lecture extends StatelessWidget {
 
 
 
-List<Widget> create_lecture() {
+List<Widget> create_lecture(BuildContext context) {
   List<Widget> lecture = [];
   for(int i=0;i<lecture_name.length;i++) {
     InkWell lec = InkWell(
-      onTap: () {print(lecture_name[i]);},
+      onTap: () {
+        print(lecture_name[i]);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => information()),
+          );
+        },
       child: Container(
         margin: EdgeInsets.all(10),
         padding: const EdgeInsets.all(10),

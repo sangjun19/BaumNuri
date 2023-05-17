@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nuri_01/sangse.dart';
+import 'package:nuri_01/information.dart';
 import 'main_page.dart';
 import 'my_page.dart';
 
