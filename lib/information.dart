@@ -80,7 +80,7 @@ class information extends StatelessWidget {
                           Flexible(
                             flex: 1,
                             child: IconButton(
-                              iconSize: 30,
+                              iconSize: 34,
                               icon: Icon(Icons.bookmark_outline),
                               onPressed: () {},
                             ),

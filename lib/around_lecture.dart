@@ -33,6 +33,8 @@ class around_lecture extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             decoration: const BoxDecoration(
               color: Color(0xFFECECEC),
+              borderRadius: BorderRadius.all(Radius.circular(15)),
+
             ),
             child: Column(
               children: create_lecture(context),
@@ -42,8 +44,6 @@ class around_lecture extends StatelessWidget {
     );
   }
 }
-
-
 
 List<Widget> create_lecture(BuildContext context) {
   List<Widget> lecture = [];

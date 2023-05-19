@@ -39,8 +39,8 @@ class _main_page extends State<main_page> {
               children: [
                 SizedBox(height: 40,),
                 IconButton(
-                  //padding: const EdgeInsets.all(20),
-                    iconSize: 40,
+                    padding: const EdgeInsets.fromLTRB(20, 20, 0, 10),
+                    iconSize: 34,
                     onPressed: () {
                       print("filter");
                     },
