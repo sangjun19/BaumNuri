@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nuri_01/onedayclass.dart';
 
 import 'bookmark_page.dart';
 import 'around_lecture.dart';
@@ -116,6 +117,7 @@ class _main_page extends State<main_page> {
           ),
           const around_lecture(),
           //around_lecture(),
+          oneday_lecture(),
         ],
       ),
     ),
