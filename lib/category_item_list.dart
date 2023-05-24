@@ -75,7 +75,10 @@ class CategoryItemList extends StatelessWidget {
           right: 30,
         ),
         decoration: BoxDecoration(
-          color: Colors.lightGreen.shade100.withAlpha(100),
+          image: DecorationImage(
+            image: AssetImage('images/savedbackground.png'),
+            fit: BoxFit.cover
+          )
         ),
         child: ListView.separated(
             itemBuilder: (context, index) {
