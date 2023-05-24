@@ -4,7 +4,7 @@ import 'package:nuri_01/information.dart';
 import 'package:nuri_01/more_lecture.dart';
 import 'package:nuri_01/more_oneday.dart';
 
-final List<String> lecture_image = <String>['images/basicenglish.png','images/gardentherapy.png','images/kdance.png'];
+final List<String> lecture_image = <String>['images/macrame.png','images/stainedglass.png','images/doll.png'];
 final List<String> lecture_name = <String>["   마크라메 체험","   유리공예 전등","   봉제인형 만들기",];
 final List<String> lecture_period = <String>["   수강기간: 2023년","   수강기간: 2023년","   수강기간: 2023년"];
 final List<String> lecture_content = <String>["   강좌내용:","   강좌내용:","   강좌내용:","   강좌내용:"];
