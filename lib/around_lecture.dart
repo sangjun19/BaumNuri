@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nuri_01/information.dart';
+import 'package:nuri_01/more_lecture.dart';
 
 final List<String> lecture_image = <String>['images/basicenglish.png','images/gardentherapy.png','images/kdance.png',];
 final List<String> lecture_name = <String>["   영어회화 초급","   원예치료","   한국무용"];
@@ -40,15 +41,24 @@ class around_lecture extends StatelessWidget {
                 ...create_lecture(context),
                 Align(
                   alignment: Alignment.bottomRight,
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: Text('더보기',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF336D58)
-                    ),),
-                ))
+                  child: GestureDetector(
+                    onTap: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => more_lecture())
+                      );
+                    },
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: Text('더보기',
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF336D58)
+                          ),),
+                      )
+    )
+                 )
               ]
             ),
         )
