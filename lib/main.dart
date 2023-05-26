@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:nuri_01/information.dart';
+import 'LoadLecture.dart';
 import 'main_page.dart';
 import 'my_page.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
-  runApp(MyApp());
+  runApp(LoadLecture());
+  //runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -14,9 +18,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
       ),
-      home: main_page(),
+      home: const main_page(),
     );
   }
 }

@@ -117,7 +117,7 @@ class _main_page extends State<main_page> {
           ),
           const around_lecture(),
           //around_lecture(),
-          oneday_lecture(),
+          const oneday_lecture(),
         ],
       ),
     ),
