@@ -16,16 +16,26 @@ class MainPage extends StatefulWidget {
 var value = "";
 
 class _MainPageState extends State<MainPage> {
-  final myController = TextEditingController();
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  // final myController = TextEditingController();
+  // static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  int _selectedIndex = 0; // 바텀바 누를때마다 화면 바꿀 때 사용하는 인덱스
+  // late Future<List<LectureCardModel>> lectureCards;
 
+  // @override
+  // void initState() {
+  //   super.initState();
+
+  //   lectureCards = ApiService.getLectureCards();
+  // }
+
+  // 메인, 저장, 마이페이지 화면 위젯들을 리스트에 담아 둠
   static final List<Widget> _widgetOptions = <Widget>[
+    // 메인
     SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Column(
         children: <Widget>[
+          // 상단 배너 뭉탱이
           Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -111,13 +121,20 @@ class _MainPageState extends State<MainPage> {
               ],
             ),
           ),
-          const around_lecture(),
-          //around_lecture(),
+
+          // 내 주변 교육강좌
+          around_lecture(),
+
+          // 원데이 클래스
           const oneday_lecture(),
         ],
       ),
     ),
+
+    // 저장
     const bookmark_page(),
+
+    // 마이페이지
     const my_page(),
   ];
 
@@ -131,6 +148,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
+        // 바텀바 눌러져있는 버튼에 맞는 화면 띄움
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -150,7 +168,7 @@ class _MainPageState extends State<MainPage> {
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: const Color(0xFF336D58),
-        onTap: _onItemTapped,
+        onTap: _onItemTapped, // 누른 버튼에 해당하는 인덱스로 갱신
       ),
     );
   }
