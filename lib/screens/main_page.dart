@@ -1,29 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:nuri_01/onedayclass.dart';
 
-import 'bookmark_page.dart';
-import 'around_lecture.dart';
-import 'category.dart';
-import 'my_page.dart';
+import '../bookmark_page.dart';
+import '../around_lecture.dart';
+import '../category.dart';
+import '../my_page.dart';
 
-/// Flutter code sample for [BottomNavigationBar].
-
-class main_page extends StatefulWidget {
-  const main_page({super.key});
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
 
   @override
-  State<main_page> createState() =>
-      _main_page();
+  State<MainPage> createState() => _MainPageState();
 }
+
 var value = "";
-class _main_page extends State<main_page> {
+
+class _MainPageState extends State<MainPage> {
   final myController = TextEditingController();
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
   static final List<Widget> _widgetOptions = <Widget>[
-
     SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Column(
@@ -32,13 +30,13 @@ class _main_page extends State<main_page> {
             decoration: const BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage('images/background.png')
-                )
-            ),
-            child: Column (
+                    image: AssetImage('images/background.png'))),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 40,),
+                const SizedBox(
+                  height: 40,
+                ),
                 IconButton(
                     padding: const EdgeInsets.fromLTRB(20, 20, 0, 10),
                     iconSize: 34,
@@ -50,10 +48,10 @@ class _main_page extends State<main_page> {
                       width: double.infinity,
                       height: double.infinity,
                       fit: BoxFit.cover,
-                    )
-                ),
+                    )),
                 const Padding(
-                  padding: EdgeInsets.fromLTRB(40, 0, 0, 0), // Adjust the padding values as needed
+                  padding: EdgeInsets.fromLTRB(
+                      40, 0, 0, 0), // Adjust the padding values as needed
                   child: Text(
                     '배움으로 세상을 누리다.',
                     style: TextStyle(
@@ -64,7 +62,8 @@ class _main_page extends State<main_page> {
                   ),
                 ),
                 const Padding(
-                  padding: EdgeInsets.fromLTRB(40, 5, 0, 0), // Adjust the padding values as needed
+                  padding: EdgeInsets.fromLTRB(
+                      40, 5, 0, 0), // Adjust the padding values as needed
                   child: Text(
                     '배움누리',
                     style: TextStyle(
@@ -84,17 +83,14 @@ class _main_page extends State<main_page> {
                         decoration: const InputDecoration(
                           labelText: '찾으시는 강좌를 입력하세요',
                           labelStyle: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w200
-                          ),
+                              color: Colors.white, fontWeight: FontWeight.w200),
                           enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white)
-                          ),
+                              borderSide: BorderSide(color: Colors.white)),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
                           ),
                         ),
-                        onChanged: (text){
+                        onChanged: (text) {
                           value = text;
                         },
                         obscureText: false,
@@ -153,10 +149,9 @@ class _main_page extends State<main_page> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color(0xFF336D58),
+        selectedItemColor: const Color(0xFF336D58),
         onTap: _onItemTapped,
       ),
     );
   }
 }
-
