@@ -91,66 +91,88 @@ class around_lecture extends StatelessWidget {
   List<Widget> create_lecture(BuildContext context) {
     List<Widget> lecture = [];
     for (int i = 0; i < lecture_name.length; i++) {
-      InkWell lec = InkWell(
-        onTap: () {
-          print(lecture_name[i]);
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => information()),
-          );
-        },
-        child: Container(
-          margin: const EdgeInsets.all(10),
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-              color: const Color(0xFFFFFFFF),
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey.withOpacity(0.7),
-                    spreadRadius: 0,
-                    blurRadius: 7,
-                    offset: const Offset(0, 5))
-              ]),
-          child: Row(
-            children: [
-              Image.asset(
-                lecture_image[i],
-                width: 100,
-                height: 100,
+      FutureBuilder<List<LectureCardModel>> lec = FutureBuilder(
+        future: lectureCards,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => information(
+                            title: snapshot.data![i].title,
+                            tutorName: snapshot.data![i].name,
+                            content: snapshot.data![i].about,
+                            date: snapshot.data![i].date,
+                            time: snapshot.data![i].time,
+                            agency: snapshot.data![i].agency,
+                            place: snapshot.data![i].place,
+                            price: snapshot.data![i].price,
+                            how: snapshot.data![i].how,
+                            number: snapshot.data![i].number,
+                          )),
+                );
+              },
+              child: Container(
+                margin: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFFFFFFF),
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.7),
+                      spreadRadius: 0,
+                      blurRadius: 7,
+                      offset: const Offset(0, 5),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      lecture_image[i],
+                      width: 100,
+                      height: 100,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            snapshot.data![i].title,
+                            maxLines: 1,
+                          ),
+                          Text(
+                            snapshot.data![i].date,
+                            maxLines: 1,
+                          ),
+                          Text(
+                            snapshot.data![i].about,
+                            maxLines: 1,
+                          ),
+                          Text(
+                            snapshot.data![i].price,
+                            maxLines: 1,
+                          ),
+                          Text(
+                            snapshot.data![i].agency,
+                            maxLines: 1,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              Column(
-                children: [
-                  FutureBuilder(
-                    future: lectureCards,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(snapshot.data![i].title),
-                            Text(snapshot.data![i].date),
-                            Text(snapshot.data![i].about),
-                            Text(snapshot.data![i].price),
-                            Text(snapshot.data![i].agency),
-                          ],
-                        );
-                      }
-                      return Container();
-                    },
-                  ),
-                  // Text(
-                  //   '${lecture_name[i]}\n'
-                  //   '${lecture_period[i]}\n'
-                  //   '${lecture_content[i]}\n'
-                  //   '${lecture_cost[i]}\n'
-                  //   '${lecture_operator[i]}',
-                  // ),
-                ],
-              )
-            ],
-          ),
-        ),
+            );
+          }
+          return Container();
+        },
       );
       lecture.add(lec);
     }
