@@ -34,11 +34,16 @@ dependencies:
   xml2json: ^5.3.2 # xml -> json 형식으로 변환 (json 형식의 데이터를 가져올 경우 필요없음)
   flutter:
     sdk: flutter
+  firebase_core: ^2.13.0
+  firebase_auth: ^4.6.1
+  cloud_firestore: ^4.7.1
+  firebase_core_platform_interface: ^4.8.0
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  firebase_storage: ^11.2.1
 
 dev_dependencies:
   flutter_test:
@@ -87,6 +92,9 @@ flutter:
     - assets/images/gardening3.jpg
     - assets/images/gardening4.jpg
     - assets/images/image.png
+    - assets/images/guitar_class.jpeg
+    - assets/images/japanese.jpeg
+    - assets/images/speech.jpg
 
   #   - images/a_dot_ham.jpeg
 

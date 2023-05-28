@@ -3,6 +3,7 @@ import 'package:nuri_01/information.dart';
 import 'package:nuri_01/models/lecture_card_model.dart';
 import 'package:nuri_01/more_lecture.dart';
 import 'package:nuri_01/services/api_service.dart';
+import 'package:nuri_01/services/firebase_test.dart';
 
 class around_lecture extends StatelessWidget {
   final List<String> lecture_image = <String>[
@@ -44,7 +45,7 @@ class around_lecture extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+        Row(mainAxisAlignment: MainAxisAlignment.start, children: const [
           Text(
             '     내 주변 교육강좌',
             style: TextStyle(
@@ -169,10 +170,46 @@ class around_lecture extends StatelessWidget {
                   ],
                 ),
               ),
+<<<<<<< HEAD
             );
           }
           return Container();
         },
+=======
+              Column(
+                children: [
+                  FutureBuilder(
+                    future: lectureCards,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        writeLectureData(snapshot.data![i]); //데이터 쓰기 테스트 (저장됨 누를 시 호출)
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(snapshot.data![i].title),
+                            Text(snapshot.data![i].date),
+                            Text(snapshot.data![i].about),
+                            Text(snapshot.data![i].price),
+                            Text(snapshot.data![i].agency),
+                          ],
+                        );
+                      }
+                      return Container();
+                    },
+                  ),
+                  // Text(
+                  //   '${lecture_name[i]}\n'
+                  //   '${lecture_period[i]}\n'
+                  //   '${lecture_content[i]}\n'
+                  //   '${lecture_cost[i]}\n'
+                  //   '${lecture_operator[i]}',
+                  // ),
+                ],
+              )
+            ],
+          ),
+        ),
+>>>>>>> main
       );
       lecture.add(lec);
     }
