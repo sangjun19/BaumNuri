@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "674401535354",
+    "project_id": "baeumnuri",
+    "storage_bucket": "baeumnuri.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674401535354:android:efdca3e525f1b622d4c2c3",
+        "android_client_info": {
+          "package_name": "com.example.nuri_01"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDF_ARET5rLqxp3u1itiR_7girsKD_-_yw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
