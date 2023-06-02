@@ -3,13 +3,13 @@ import 'package:nuri_01/information.dart';
 import 'package:nuri_01/models/lecture_card_model.dart';
 import 'package:nuri_01/more_lecture.dart';
 import 'package:nuri_01/services/api_service.dart';
-import 'package:nuri_01/services/firebase_test.dart';
+import 'package:nuri_01/services/firebase_data.dart';
 
 class around_lecture extends StatelessWidget {
   final List<String> lecture_image = <String>[
-    'images/basicenglish.png',
-    'images/gardentherapy.png',
-    'images/kdance.png',
+    'images/japan.png',
+    'images/speech2.png',
+    'images/guitar.png',
   ];
   final List<String> lecture_name = <String>[
     "   영어회화 초급",
@@ -32,12 +32,12 @@ class around_lecture extends StatelessWidget {
     "   수강료: 30,000"
   ];
   final List<String> lecture_operator = <String>[
-    "  운영기관: 유성구청",
+    "   운영기관: 유성구청",
     "   운영기관: 유성구청",
     "   운영기관: 유성구청"
   ];
   final Future<List<LectureCardModel>> lectureCards =
-      ApiService.getLectureCards();
+  ApiService.getLectureCards();
 
   around_lecture({super.key});
 
@@ -45,9 +45,10 @@ class around_lecture extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(height: 10),
         Row(mainAxisAlignment: MainAxisAlignment.start, children: const [
           Text(
-            '     내 주변 교육강좌',
+            '     맞춤강좌',
             style: TextStyle(
               color: Color(0xFF336D58),
               fontWeight: FontWeight.bold,
@@ -92,67 +93,108 @@ class around_lecture extends StatelessWidget {
   List<Widget> create_lecture(BuildContext context) {
     List<Widget> lecture = [];
     for (int i = 0; i < lecture_name.length; i++) {
-      InkWell lec = InkWell(
-        onTap: () {
-          print(lecture_name[i]);
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => information()),
-          );
-        },
-        child: Container(
-          margin: const EdgeInsets.all(10),
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-              color: const Color(0xFFFFFFFF),
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey.withOpacity(0.7),
-                    spreadRadius: 0,
-                    blurRadius: 7,
-                    offset: const Offset(0, 5))
-              ]),
-          child: Row(
-            children: [
-              Image.asset(
-                lecture_image[i],
-                width: 100,
-                height: 100,
-              ),
-              Column(
-                children: [
-                  FutureBuilder(
-                    future: lectureCards,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        writeLectureData(snapshot.data![i]); //데이터 쓰기 테스트 (저장됨 누를 시 호출)
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(snapshot.data![i].title),
-                            Text(snapshot.data![i].date),
-                            Text(snapshot.data![i].about),
-                            Text(snapshot.data![i].price),
-                            Text(snapshot.data![i].agency),
-                          ],
-                        );
-                      }
-                      return Container();
-                    },
+      Widget lec = FutureBuilder<List<LectureCardModel>>(
+        future: ApiService.getLectureCards(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          }
+          if (snapshot.hasData) {
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => information(
+                      title: snapshot.data![i].title,
+                      tutorName: snapshot.data![i].name,
+                      content: snapshot.data![i].about,
+                      date: snapshot.data![i].date,
+                      time: snapshot.data![i].time,
+                      agency: snapshot.data![i].agency,
+                      place: snapshot.data![i].place,
+                      price: snapshot.data![i].price,
+                      how: snapshot.data![i].how,
+                      number: snapshot.data![i].number,
+                      img: AssetImage(lecture_image[i]),
+                    ),
                   ),
-                  // Text(
-                  //   '${lecture_name[i]}\n'
-                  //   '${lecture_period[i]}\n'
-                  //   '${lecture_content[i]}\n'
-                  //   '${lecture_cost[i]}\n'
-                  //   '${lecture_operator[i]}',
-                  // ),
-                ],
-              )
-            ],
-          ),
-        ),
+                );
+              },
+              child: Container(
+                margin: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFFFFFFF),
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.7),
+                      spreadRadius: 0,
+                      blurRadius: 7,
+                      offset: const Offset(0, 5),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      lecture_image[i],
+                      width: 100,
+                      height: 100,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            snapshot.data![i].title,
+                            maxLines: 1,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Text(
+                            "수강기간: ${snapshot.data![i].date}",
+                            maxLines: 1,
+                            style: const TextStyle(
+                              fontSize: 13,
+                            ),
+                          ),
+                          Text(
+                            "강좌내용: ${snapshot.data![i].about}",
+                            maxLines: 1,
+                            style: const TextStyle(
+                              fontSize: 13,
+                            ),
+                          ),
+                          Text(
+                            "수강료: ${snapshot.data![i].price}원",
+                            maxLines: 1,
+                            style: const TextStyle(
+                              fontSize: 13,
+                            ),
+                          ),
+                          Text(
+                            "운영기관: ${snapshot.data![i].agency}",
+                            maxLines: 1,
+                            style: const TextStyle(
+                              fontSize: 13,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }
+          return Container();
+        },
       );
       lecture.add(lec);
     }

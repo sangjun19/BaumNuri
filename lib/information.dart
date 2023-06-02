@@ -1,22 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:nuri_01/models/lecture_card_model.dart';
-import 'package:nuri_01/services/api_service.dart';
-
-void main() {
-  runApp(information());
-}
 
 class information extends StatefulWidget {
+  final String title;
+  final String tutorName;
+  final String content;
+  final String date;
+  final String time;
+  final String agency;
+  final String place;
+  final String price;
+  final String how;
+  final String number;
+  final AssetImage img;
+
+  const information({
+    super.key,
+    required this.title,
+    required this.tutorName,
+    required this.content,
+    required this.date,
+    required this.time,
+    required this.agency,
+    required this.place,
+    required this.price,
+    required this.how,
+    required this.number,
+    required this.img,
+  });
+
   @override
   State<information> createState() => _informationState();
 }
 
+bool isStored = false;
 class _informationState extends State<information> {
-  String name = "안녕하세요 영어회화";
-  final Future<List<LectureCardModel>> lectureCards =
-  ApiService.getLectureCards();
-
-  bool isStored = false;
+  // String name = "안녕하세요 영어회화";
+  // final Future<List<LectureCardModel>> lectureCards =
+  //     ApiService.getLectureCards();
 
   @override
   Widget build(BuildContext context) {
@@ -27,18 +47,16 @@ class _informationState extends State<information> {
             Flexible(
               flex: 10,
               child: Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.vertical(
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.vertical(
                     bottom: Radius.circular(10),
                   ),
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/image.png"),
-                      fit: BoxFit.cover),
+                  image: DecorationImage(image: widget.img, fit: BoxFit.cover),
                 ),
                 child: Column(
                   children: [
                     const SizedBox(
-                      height: 60,
+                      height: 50,
                     ),
                     Row(
                       children: [
@@ -47,7 +65,7 @@ class _informationState extends State<information> {
                         ),
                         IconButton(
                           iconSize: 30,
-                          icon: Icon(Icons.arrow_back_ios),
+                          icon: const Icon(Icons.arrow_back_ios),
                           onPressed: () {
                             Navigator.pop(context);
                           },
@@ -62,11 +80,11 @@ class _informationState extends State<information> {
               flex: 5,
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -82,7 +100,7 @@ class _informationState extends State<information> {
                             child: FittedBox(
                               fit: BoxFit.fitWidth,
                               child: Text(
-                                "$name",
+                                widget.title,
                                 style: const TextStyle(
                                   fontSize: 40,
                                   fontWeight: FontWeight.w800,
@@ -95,12 +113,18 @@ class _informationState extends State<information> {
                           flex: 1,
                           child: IconButton(
                             iconSize: 34,
-                            color: Color(0xFF336D58),
-                            icon: Icon((isStored)?Icons.bookmark:Icons.bookmark_outline),
+                            color: const Color(0xFF336D58),
+                            icon: Icon((isStored)
+                                ? Icons.bookmark
+                                : Icons.bookmark_outline),
                             onPressed: () {
                               setState(() {
-                                if(isStored == false) isStored = true;
-                                else isStored = false;
+                                if (isStored == false) {
+                                  isStored = true;
+                                  //writeLectureData()
+                                } else {
+                                  isStored = false;
+                                }
                                 print(isStored);
                               });
                             },
@@ -148,41 +172,45 @@ class _informationState extends State<information> {
                       ),
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Flexible(
-
-                          child: Center(
-                              child: Text(
-                        "어학",
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF336D58),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Flexible(
+                            flex: 1,
+                            child: Center(
+                                child: Text(
+                                  "어학",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF336D58),
+                                  ),
+                                ))),
+                        Flexible(
+                            flex: 1,
+                            child: Center(
+                                child: Text(
+                                  widget.price,
+                                  style: const TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF336D58),
+                                  ),
+                                ))),
+                        Flexible(
+                          flex: 1,
+                          child: Text(
+                            widget.date,
+                            style: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF336D58),
+                            ),
+                          ),
                         ),
-                      ))),
-                      Flexible(
-                          child: Center(
-                              child: Text(
-                        "어학",
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF336D58),
-                        ),
-                      ))),
-                      Flexible(
-                          child: Center(
-                              child: Text(
-                        "어학",
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF336D58),
-                        ),
-                      ))),
-                    ],
+                      ],
+                    ),
                   )
                 ],
               ),
@@ -191,7 +219,7 @@ class _informationState extends State<information> {
               child: Container(
                 height: 2,
                 width: 370.0,
-                color: Color(0xFF336D58),
+                color: const Color(0xFF336D58),
               ),
             ),
             Flexible(
@@ -203,49 +231,49 @@ class _informationState extends State<information> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text(
-                      "강사명 : ",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                      "강사명 : ${widget.tutorName}",
+                      style: const TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.w600),
                     ),
                     Text(
-                      "내용 : ",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                      "내용 : ${widget.content}",
+                      style: const TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.w600),
                     ),
                     Text(
-                      "기간 : ",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                      "기간 : ${widget.date}",
+                      style: const TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.w600),
                     ),
                     Text(
-                      "시간 : ",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                      "시간 : ${widget.time}",
+                      style: const TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.w600),
                     ),
                     Text(
-                      "기관 : ",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                      "기관 : ${widget.agency}",
+                      style: const TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.w600),
                     ),
                     Text(
-                      "장소 : ",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                      "장소 : ${widget.place}",
+                      style: const TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.w600),
                     ),
                     Text(
-                      "수강료 : ",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                      "수강료 : ${widget.price}",
+                      style: const TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.w600),
                     ),
                     Text(
-                      "신청 방법 : v",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                      "신청 방법 : ${widget.how}",
+                      style: const TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.w600),
                     ),
                     Text(
-                      "전화번호 : ",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                      "전화번호 : ${widget.number}",
+                      style: const TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),

@@ -2,12 +2,37 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nuri_01/information.dart';
 
-final List<String> lecture_image = <String>['images/basicenglish.png','images/gardentherapy.png','images/kdance.png'];
-final List<String> lecture_name = <String>["   영어회화 초급","   유리공예 전등","   봉제인형 만들기",];
-final List<String> lecture_period = <String>["   수강기간: 2023년","   수강기간: 2023년","   수강기간: 2023년"];
-final List<String> lecture_content = <String>["   강좌내용:","   강좌내용:","   강좌내용:","   강좌내용:"];
-final List<String> lecture_cost = <String>["   수강료: 30,000원","   수강료: 30,000원","   수강료: 30,000"];
-final List<String> lecture_operator = <String>["  운영기관: 유성구청","   운영기관: 유성구청","   운영기관: 유성구청"];
+final List<String> lecture_image = <String>[
+  'images/basicenglish.png',
+  'images/gardentherapy.png',
+  'images/kdance.png'
+];
+final List<String> lecture_name = <String>[
+  "   영어회화 초급",
+  "   유리공예 전등",
+  "   봉제인형 만들기",
+];
+final List<String> lecture_period = <String>[
+  "   수강기간: 2023년",
+  "   수강기간: 2023년",
+  "   수강기간: 2023년"
+];
+final List<String> lecture_content = <String>[
+  "   강좌내용:",
+  "   강좌내용:",
+  "   강좌내용:",
+  "   강좌내용:"
+];
+final List<String> lecture_cost = <String>[
+  "   수강료: 30,000원",
+  "   수강료: 30,000원",
+  "   수강료: 30,000"
+];
+final List<String> lecture_operator = <String>[
+  "  운영기관: 유성구청",
+  "   운영기관: 유성구청",
+  "   운영기관: 유성구청"
+];
 
 class more_lecture extends StatelessWidget {
   const more_lecture({super.key});
@@ -17,27 +42,25 @@ class more_lecture extends StatelessWidget {
     for (int i = 0; i < lecture_name.length; i++) {
       InkWell lec = InkWell(
         onTap: () {
-          print(lecture_name[i]);
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => information()),
-          );
+          // print(lecture_name[i]);
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => information()),
+          // );
         },
         child: Container(
-          margin: EdgeInsets.fromLTRB(30, 20, 30, 20),
+          margin: const EdgeInsets.fromLTRB(30, 20, 30, 20),
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-              color: Color(0xFFFFFFFF),
+              color: const Color(0xFFFFFFFF),
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
                     color: Colors.grey.withOpacity(0.7),
                     spreadRadius: 0,
                     blurRadius: 7,
-                    offset: const Offset(0, 5)
-                )
-              ]
-          ),
+                    offset: const Offset(0, 5))
+              ]),
           child: Row(
             children: [
               Image.asset(
@@ -53,7 +76,6 @@ class more_lecture extends StatelessWidget {
                         '${lecture_content[i]}\n'
                         '${lecture_cost[i]}\n'
                         '${lecture_operator[i]}',
-
                   ),
                 ],
               )
@@ -90,16 +112,14 @@ class more_lecture extends StatelessWidget {
           ),
         ),
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('images/savedbackground.png'),
-                  fit: BoxFit.cover
-              )
-          ),
+                  fit: BoxFit.cover)),
           child: Column(
             children: [
               Container(
-            /*
+                /*
                 height: 90,
                 // color: Colors.white,
                 decoration: BoxDecoration(
@@ -127,7 +147,9 @@ class more_lecture extends StatelessWidget {
                   ),
                 ),*/
               ),
-              SizedBox(height: 30,),
+              const SizedBox(
+                height: 30,
+              ),
               ...create_lecture(context)
             ],
           ),

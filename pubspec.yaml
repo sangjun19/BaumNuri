@@ -87,13 +87,20 @@ flutter:
     - images/macrame.png
     - images/stainedglass.png
     - images/doll.png
+    - images/splash.png
+    - images/servey_background.png
+    - images/logo.png
+    - images/japan.png
+    - images/speech2.png
+    - images/guitar.png
+    - images/glass.png
+    - images/english.png
     - assets/images/gardening1.jpg
     - assets/images/gardening2.png
     - assets/images/gardening3.jpg
     - assets/images/gardening4.jpg
     - assets/images/image.png
     - assets/images/guitar_class.jpeg
-    - assets/images/japanese.jpeg
     - assets/images/speech.jpg
 
   #   - images/a_dot_ham.jpeg
