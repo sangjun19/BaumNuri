@@ -1,41 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:nuri_01/information.dart';
+import 'package:nuri_01/lecturecard_widget.dart';
 import 'package:nuri_01/models/lecture_card_model.dart';
 import 'package:nuri_01/more_lecture.dart';
 import 'package:nuri_01/services/api_service.dart';
-import 'package:nuri_01/services/firebase_data.dart';
 
 class around_lecture extends StatelessWidget {
   final List<String> lecture_image = <String>[
-    'images/japan.png',
-    'images/speech2.png',
+    'images/japanese.png',
+    'images/speech.png',
     'images/guitar.png',
+    'images/song_class.jpeg',
+    'images/biggold.jpg',
   ];
-  final List<String> lecture_name = <String>[
-    "   영어회화 초급",
-    "   원예치료",
-    "   한국무용"
-  ];
-  final List<String> lecture_period = <String>[
-    "   수강기간: 2023년",
-    "   수강기간: 2023년",
-    "   수강기간: 2023년"
-  ];
-  final List<String> lecture_content = <String>[
-    "   강좌내용:",
-    "   강좌내용:",
-    "   강좌내용:"
-  ];
-  final List<String> lecture_cost = <String>[
-    "   수강료: 30,000원",
-    "   수강료: 30,000원",
-    "   수강료: 30,000"
-  ];
-  final List<String> lecture_operator = <String>[
-    "   운영기관: 유성구청",
-    "   운영기관: 유성구청",
-    "   운영기관: 유성구청"
-  ];
+
+  // final Map<String?, String> lecture_image = {
+  //   '생활일본어': 'images/japanese.png',
+  //   '생활스피치': 'images/speech.png',
+  //   '기타C': 'images/guitar.png',
+  // };
   final Future<List<LectureCardModel>> lectureCards =
   ApiService.getLectureCards();
 
@@ -45,10 +28,12 @@ class around_lecture extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 10),
+        const SizedBox(
+          height: 20,
+        ),
         Row(mainAxisAlignment: MainAxisAlignment.start, children: const [
           Text(
-            '     맞춤강좌',
+            '     맞춤 강좌',
             style: TextStyle(
               color: Color(0xFF336D58),
               fontWeight: FontWeight.bold,
@@ -64,7 +49,25 @@ class around_lecture extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(15)),
           ),
           child: Column(children: [
-            ...create_lecture(context),
+            // ...create_lecture(context),
+            FutureBuilder(
+              future: lectureCards,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return SizedBox(
+                    height: 250,
+                    child: makeList(snapshot),
+                  );
+                }
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
+            ),
+            // SizedBox(
+            //   height: 100,
+            //   child: makeList2(create_lecture(context)),
+            // ),
             Align(
                 alignment: Alignment.bottomRight,
                 child: GestureDetector(
@@ -90,35 +93,105 @@ class around_lecture extends StatelessWidget {
     );
   }
 
+  // ListView makeList2(List<Widget> cardList) {
+  //   // return ListView.separated(
+  //   //   shrinkWrap: true,
+  //   //   scrollDirection: Axis.horizontal,
+  //   //   itemCount: 3,
+  //   //   padding: const EdgeInsets.symmetric(
+  //   //     vertical: 10,
+  //   //     horizontal: 20,
+  //   //   ),
+  //   //   itemBuilder: (context, index) {
+  //   //     var lectureCard = cardList[index];
+  //   //     return lectureCard;
+  //   //   },
+  //   //   separatorBuilder: (context, index) {
+  //   //     return const SizedBox(
+  //   //       width: 30,
+  //   //     );
+  //   //   },
+  //   // );
+  //   return ListView(
+  //     shrinkWrap: true,
+  //     padding: const EdgeInsets.all(8),
+  //     scrollDirection: Axis.horizontal,
+  //     children: const [
+  //       Text("asd"),
+  //       Text("qwe"),
+  //     ],
+  //   );
+  // }
+
+  ListView makeList(AsyncSnapshot<List<LectureCardModel>> snapshot) {
+    return ListView.separated(
+      scrollDirection: Axis.horizontal,
+      itemCount: 5,
+      padding: const EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: 20,
+      ),
+      itemBuilder: (context, index) {
+        var lectureCard = snapshot.data![index];
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => information(
+                    title: lectureCard.title,
+                    tutorName: lectureCard.name,
+                    content: lectureCard.about,
+                    date: lectureCard.date,
+                    time: lectureCard.time,
+                    agency: lectureCard.agency,
+                    place: lectureCard.place,
+                    price: lectureCard.price,
+                    how: lectureCard.how,
+                    number: lectureCard.number,
+                    img: AssetImage(lecture_image[index]),
+                  )),
+            );
+          },
+          child: LectureCard(
+            title: lectureCard.title,
+            img: AssetImage(lecture_image[index]),
+          ),
+        );
+      },
+      separatorBuilder: (context, index) {
+        return const SizedBox(
+          width: 30,
+        );
+      },
+    );
+  }
+
   List<Widget> create_lecture(BuildContext context) {
     List<Widget> lecture = [];
-    for (int i = 0; i < lecture_name.length; i++) {
-      Widget lec = FutureBuilder<List<LectureCardModel>>(
-        future: ApiService.getLectureCards(),
+    for (int i = 0; i <9; i++) {
+      FutureBuilder<List<LectureCardModel>> lec = FutureBuilder(
+        future: lectureCards,
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
-          }
           if (snapshot.hasData) {
             return GestureDetector(
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => information(
-                      title: snapshot.data![i].title,
-                      tutorName: snapshot.data![i].name,
-                      content: snapshot.data![i].about,
-                      date: snapshot.data![i].date,
-                      time: snapshot.data![i].time,
-                      agency: snapshot.data![i].agency,
-                      place: snapshot.data![i].place,
-                      price: snapshot.data![i].price,
-                      how: snapshot.data![i].how,
-                      number: snapshot.data![i].number,
-                      img: AssetImage(lecture_image[i]),
-                    ),
-                  ),
+                      builder: (context) => information(
+                        title: snapshot.data![i].title,
+                        tutorName: snapshot.data![i].name,
+                        content: snapshot.data![i].about,
+                        date: snapshot.data![i].date,
+                        time: snapshot.data![i].time,
+                        agency: snapshot.data![i].agency,
+                        place: snapshot.data![i].place,
+                        price: snapshot.data![i].price,
+                        how: snapshot.data![i].how,
+                        number: snapshot.data![i].number,
+                        img: AssetImage(lecture_image[i]),
+                      )),
                 );
               },
               child: Container(
@@ -193,7 +266,7 @@ class around_lecture extends StatelessWidget {
               ),
             );
           }
-          return Container();
+          return const CircularProgressIndicator();
         },
       );
       lecture.add(lec);

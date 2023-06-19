@@ -87,21 +87,35 @@ flutter:
     - images/macrame.png
     - images/stainedglass.png
     - images/doll.png
-    - images/splash.png
-    - images/servey_background.png
-    - images/logo.png
-    - images/japan.png
-    - images/speech2.png
-    - images/guitar.png
-    - images/glass.png
     - images/english.png
+    - images/lightbulb.png
+    - images/japanese.png
+    - images/speech.png
+    - images/guitar.png
+    - images/songclass.png
+    - images/daeguem.png
+    - images/book.png
+    - images/song_class.jpeg
+    - images/biggold.jpg
+    - images/talk_pocket.jpg
+    - images/black_white_stone.jpg
+    - images/dei.jpg
+    - images/healing_travel.jpg
+    - images/abata_uisang.jpg
+    - images/com_internet.png
+    - images/fashion_item.jpg
+    - images/rpa.jpg
+    - images/semu.jpeg
+    - images/visual.png
+    - images/zep.png
     - assets/images/gardening1.jpg
     - assets/images/gardening2.png
     - assets/images/gardening3.jpg
     - assets/images/gardening4.jpg
     - assets/images/image.png
-    - assets/images/guitar_class.jpeg
-    - assets/images/speech.jpg
+    - images/servey_background.png
+    - images/logo.png
+    - images/splash.png
 
   #   - images/a_dot_ham.jpeg
 

@@ -21,7 +21,7 @@ class category extends StatelessWidget {
 List<Widget> create_button(BuildContext context) {
   List<Widget> button_list = [];
   int i;
-  category_images.asMap().forEach((index, image) {
+  for(i=0;i<category_images.length;i++) {
     Column button =  Column(
       children: [
         Container(
@@ -36,16 +36,13 @@ List<Widget> create_button(BuildContext context) {
               padding: const EdgeInsets.all(0),
               iconSize: 80,
               onPressed: () {
-                //print(i);
-                if(index == 2) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => CategoryItemList()),
-                  );
-                }
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CategoryItemList()),
+                );
               },
               icon: Image.asset(
-                  category_images[index],
+                  category_images[i],
                   width: double.infinity,
                   height: double.infinity,
                   fit: BoxFit.cover
@@ -55,7 +52,7 @@ List<Widget> create_button(BuildContext context) {
         Padding(
           padding: EdgeInsets.only(bottom: 20),
           child: Text(
-            category_name[index],
+            category_name[i],
             style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -64,6 +61,6 @@ List<Widget> create_button(BuildContext context) {
       ],
     );
     button_list.add(button);
-  });
+  }
   return button_list;
 }

@@ -4,9 +4,24 @@ import 'package:nuri_01/servey1.dart';
 import 'package:nuri_01/servey2.dart';
 import 'package:nuri_01/start_screen.dart';
 
-class login_page extends StatelessWidget {
+class login_page extends StatefulWidget {
+  @override
+  _login_pageState createState() => _login_pageState();
+}
+
+class _login_pageState extends State<login_page> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();
+
+  String username = '';
+  String phoneNumber = '';
+
+  @override
+  void dispose() {
+    usernameController.dispose();
+    phoneNumberController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,23 +58,22 @@ class login_page extends StatelessWidget {
                       padding: EdgeInsets.fromLTRB(20, 0, 20, 280),
                       child: Column(
                         children: [
-
-                           TextField(
-                              controller: usernameController,
-                              decoration: InputDecoration(
-                                hintText: '사용자 이름',
-                                fillColor: Colors.white,
-                                filled: true,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                  borderSide: BorderSide.none,
-                                ),
-                                hintStyle: TextStyle(
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          TextField(
+                            controller: usernameController,
+                            decoration: InputDecoration(
+                              hintText: '사용자 이름',
+                              fillColor: Colors.white,
+                              filled: true,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                                borderSide: BorderSide.none,
+                              ),
+                              hintStyle: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
+                          ),
                           SizedBox(height: 20),
                           TextField(
                             controller: phoneNumberController,
@@ -84,6 +98,11 @@ class login_page extends StatelessWidget {
                     SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
+                        setState(() {
+                          username = usernameController.text;
+                          phoneNumber = phoneNumberController.text;
+                        });
+
                         Navigator.push(
                           context,
                           PageRouteBuilder(

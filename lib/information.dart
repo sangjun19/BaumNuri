@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nuri_01/services/firebase_data.dart';
 
 class information extends StatefulWidget {
   final String title;
@@ -32,11 +33,12 @@ class information extends StatefulWidget {
   State<information> createState() => _informationState();
 }
 
-bool isStored = false;
 class _informationState extends State<information> {
   // String name = "안녕하세요 영어회화";
   // final Future<List<LectureCardModel>> lectureCards =
   //     ApiService.getLectureCards();
+
+  bool isStored = false;
 
   @override
   Widget build(BuildContext context) {
@@ -84,18 +86,13 @@ class _informationState extends State<information> {
                     height: 10,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Flexible(
-                          flex: 1,
-                          child: SizedBox(
-                            width: 40,
-                          ),
-                        ),
+
                         Flexible(
-                          flex: 1,
+                          flex: 3,
                           child: SizedBox(
                             child: FittedBox(
                               fit: BoxFit.fitWidth,
@@ -111,23 +108,35 @@ class _informationState extends State<information> {
                         ),
                         Flexible(
                           flex: 1,
-                          child: IconButton(
-                            iconSize: 34,
-                            color: const Color(0xFF336D58),
-                            icon: Icon((isStored)
-                                ? Icons.bookmark
-                                : Icons.bookmark_outline),
+                          // child: IconButton(
+                          //   iconSize: 34,
+                          //   color: const Color(0xFF336D58),
+                          //   icon: Icon((isStored)
+                          //       ? Icons.bookmark
+                          //       : Icons.bookmark_outline),
+                          //   onPressed: () {
+                          //     setState(
+                          //       () {
+                          //         if (isStored == false) {
+                          //           isStored = true;
+                          //         } else {
+                          //           isStored = false;
+                          //         }
+                          //         print(isStored);
+                          //       },
+                          //     );
+                          //   },
+                          // ),
+                          child: OutlinedButton(
                             onPressed: () {
-                              setState(() {
-                                if (isStored == false) {
-                                  isStored = true;
-                                  //writeLectureData()
-                                } else {
-                                  isStored = false;
-                                }
-                                print(isStored);
-                              });
+                              writeLectureInfor(widget);
                             },
+                            child: const Text(
+                              "저장",
+                              style: TextStyle(
+                                color: Color(0xFF336D58),
+                              ),
+                            ),
                           ),
                         ),
                       ],
@@ -135,12 +144,12 @@ class _informationState extends State<information> {
                   ),
                   Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: const [
                           Flexible(
                             flex: 1,
                             child: Center(

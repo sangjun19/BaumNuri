@@ -49,8 +49,9 @@ class _MainPageState extends State<MainPage> {
                 ),
                 IconButton(
                     padding: const EdgeInsets.fromLTRB(20, 20, 0, 10),
-                    iconSize: 30,
+                    iconSize: 34,
                     onPressed: () {
+                      print("filter");
                     },
                     icon: Image.asset(
                       "images/filter.png",
@@ -59,7 +60,8 @@ class _MainPageState extends State<MainPage> {
                       fit: BoxFit.cover,
                     )),
                 const Padding(
-                  padding: EdgeInsets.fromLTRB(40, 5, 0, 0), // Adjust the padding values as needed
+                  padding: EdgeInsets.fromLTRB(
+                      40, 0, 0, 0), // Adjust the padding values as needed
                   child: Text(
                     '배움으로 세상을 누리다.',
                     style: TextStyle(
@@ -70,7 +72,8 @@ class _MainPageState extends State<MainPage> {
                   ),
                 ),
                 const Padding(
-                  padding: EdgeInsets.fromLTRB(40, 5, 0, 0), // Adjust the padding values as needed
+                  padding: EdgeInsets.fromLTRB(
+                      40, 5, 0, 0), // Adjust the padding values as needed
                   child: Text(
                     '배움누리',
                     style: TextStyle(
@@ -123,7 +126,8 @@ class _MainPageState extends State<MainPage> {
           around_lecture(),
 
           // 원데이 클래스
-          const oneday_lecture(),
+          // const oneday_lecture(),
+          OnedayClass(),
         ],
       ),
     ),

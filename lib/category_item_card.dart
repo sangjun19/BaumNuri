@@ -10,12 +10,12 @@ class CategoryItemCard extends StatelessWidget {
 
   const CategoryItemCard(
       {super.key,
-      required this.imgUrl,
-      required this.title,
-      required this.date,
-      required this.content,
-      required this.price,
-      required this.agency});
+        required this.imgUrl,
+        required this.title,
+        required this.date,
+        required this.content,
+        required this.price,
+        required this.agency});
 
   @override
   Widget build(BuildContext context) {
