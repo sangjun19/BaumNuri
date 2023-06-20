@@ -92,7 +92,7 @@ class my_page extends StatelessWidget {
                           borderRadius: BorderRadius.circular(15),
                         ),
                         padding: EdgeInsets.symmetric(horizontal: 35, vertical: 18),
-                        backgroundColor: Colors.redAccent,
+                        backgroundColor: Colors.green,
                       ),
                       onPressed: (){
 
@@ -109,7 +109,7 @@ class my_page extends StatelessWidget {
                           borderRadius: BorderRadius.circular(15),
                         ),
                         padding: EdgeInsets.symmetric(horizontal: 35, vertical: 18),
-                        backgroundColor: Colors.redAccent,
+                        backgroundColor: Colors.green,
                       ),
                       onPressed: (){
 

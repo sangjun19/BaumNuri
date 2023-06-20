@@ -61,7 +61,7 @@ class _login_pageState extends State<login_page> {
                           TextField(
                             controller: usernameController,
                             decoration: InputDecoration(
-                              hintText: '사용자 이름',
+                              hintText: '  사용자 이름',
                               fillColor: Colors.white,
                               filled: true,
                               border: OutlineInputBorder(
@@ -79,7 +79,7 @@ class _login_pageState extends State<login_page> {
                             controller: phoneNumberController,
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
-                              hintText: '전화번호',
+                              hintText: '  전화번호',
                               fillColor: Colors.white,
                               filled: true,
                               border: OutlineInputBorder(

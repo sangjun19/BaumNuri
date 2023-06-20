@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:nuri_01/onedayclass.dart';
+import 'package:nuri_01/search_action.dart';
 
 import '../bookmark_page.dart';
 import '../around_lecture.dart';
 import '../category.dart';
 import '../my_page.dart';
+import '../search_lecture.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -83,40 +85,7 @@ class _MainPageState extends State<MainPage> {
                     ),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 290,
-                      height: 42,
-                      child: TextField(
-                        decoration: const InputDecoration(
-                          labelText: '찾으시는 강좌를 입력하세요',
-                          labelStyle: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.w200),
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white)),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                        ),
-                        onChanged: (text) {
-                          value = text;
-                        },
-                        obscureText: false,
-                      ),
-                    ),
-                    IconButton(
-                      iconSize: 40,
-                      icon: const Icon(Icons.search),
-                      color: Colors.white,
-                      tooltip: 'Increase volume by 10',
-                      onPressed: () {
-                        print(value);
-                      },
-                    ),
-                  ],
-                ),
+                const search_action(),
                 const category(),
               ],
             ),

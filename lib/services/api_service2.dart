@@ -10,7 +10,7 @@ class ApiService {
     'serviceKey':
     'NujPfara6x2Y5732ziEuwNtVw95viV+rwbnfuCaGFXhK0p7/hhRLQGEjQDqCD9oJqWY0a3M8P9baBKr9Y4d5zw==',
     'pageNo': '2',
-    'numOfRows': '9',
+    'numOfRows': '50',
     'type': 'json',
     // 'lctreNm': '',
     // 'instrctrNm': '',

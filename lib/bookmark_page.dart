@@ -3,7 +3,16 @@ import 'package:nuri_01/services/firebase_data.dart';
 
 final List<String> lecture_image = <String>[
   'images/english.png',
-  'images/lightbulb.png',
+  'images/guitar.png',
+  'images/japanese.png',
+  'images/english.png',
+  'images/guitar.png',
+  'images/japanese.png',
+  'images/english.png',
+  'images/guitar.png',
+  'images/japanese.png',
+  'images/english.png',
+  'images/guitar.png',
   'images/japanese.png',
 ];
 
