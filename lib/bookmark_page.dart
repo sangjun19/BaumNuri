@@ -168,38 +168,42 @@ class _bookmark_pageState extends State<bookmark_page> {
                 fit: BoxFit.cover,
               ),
             ),
-            child: Column(
+            child: ListView(
               children: [
-                Container(
-                  height: 90,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        offset: const Offset(0, 3),
-                        blurRadius: 4,
+                Column(
+                  children: [
+                    Container(
+                      height: 90,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.2),
+                            offset: const Offset(0, 3),
+                            blurRadius: 4,
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  child: const Center(
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 32),
-                      child: Text(
-                        "저장됨",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
+                      child: const Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 32),
+                          child: Text(
+                            "저장됨",
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                    const SizedBox(height: 30),
+                    ...createLecture(context),
+                  ],
                 ),
-                const SizedBox(height: 30),
-                ...createLecture(context),
               ],
-            ),
+            )
           ),
           if (isLoading)
             Container(
